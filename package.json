@@ -1,0 +1,20 @@
+{
+  "name": "zenefits-coding-challenge",
+  "version": "1.0.0",
+  "description": "coding challenge for zenefits",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "babel-preset-react": "~6.1.18",
+    "babel-core": "~6.1.21",
+    "react": "~0.14.2",
+    "babel-loader": "~6.2.0",
+    "react-dom": "~0.14.2",
+    "webpack": "~1.12.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Theodore Wu",
+  "license": "ISC"
+}
