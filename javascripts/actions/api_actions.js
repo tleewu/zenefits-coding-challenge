@@ -6,6 +6,13 @@ var ApiActions = {
       actionType: "TEST",
       center: center
     });
+  },
+
+  updateQuery: function (query) {
+    AppDispatcher.dispatch ({
+      actionType: "TEST2",
+      query: query
+    });
   }
 };
 

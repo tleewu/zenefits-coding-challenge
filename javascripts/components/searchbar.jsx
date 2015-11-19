@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var ApiUtil = require('../util/api_util.js');
+var ApiActions = require('../actions/api_actions.js');
 
 var SearchBar = React.createClass({
   getInitialState: function () {
@@ -16,13 +17,15 @@ var SearchBar = React.createClass({
   _handleSubmit: function (e) {
     e.preventDefault();
     var location = this.state.location;
-    if (location.length) {
-      var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-        location + "&key=AIzaSyCgpLQ3tKe3gpdI5oraHqYI6Wu0I4oLf-0";
-      ApiUtil.findGeocode(geocodeUrl);
-    } else {
-      alert ("please enter a location before you submit");
-    }
+    // if (location.length) {
+    //   var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+    //     location + "&key=AIzaSyCgpLQ3tKe3gpdI5oraHqYI6Wu0I4oLf-0";
+    //   ApiUtil.findGeocode(geocodeUrl);
+    // } else {
+    //   alert ("please enter a location before you submit");
+    // }
+
+    ApiActions.updateQuery(location);
   },
 
   render: function () {
