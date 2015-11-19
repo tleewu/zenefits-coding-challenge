@@ -1,16 +1,11 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
 
 var ApiActions = {
-  resetMapCenter: function (center) {
-    AppDispatcher.dispatch ({
-      actionType: "TEST",
-      center: center
-    });
-  },
 
-  updateQuery: function (query) {
+  updateQuery: function (location, query) {
     AppDispatcher.dispatch ({
       actionType: "TEST2",
+      center: location,
       query: query
     });
   }

@@ -1,11 +1,11 @@
 var ApiActions = require('../actions/api_actions.js');
 
 var ApiUtil = {
-  findGeocode: function (geocodeUrl) {
+  findGeocode: function (geocodeUrl, query) {
     $.ajax ({
       url: geocodeUrl,
       success: function (result) {
-        ApiActions.resetMapCenter (result.results[0].geometry.location);
+        ApiActions.updateQuery (result.results[0].geometry.location, query);
       }
     });
   }

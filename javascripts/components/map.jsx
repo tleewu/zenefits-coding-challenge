@@ -5,26 +5,38 @@ var MapStore = require('../store/map.js');
 
 var Map = React.createClass({
 
+  getInitialState: function () {
+    return ({markers: []});
+  },
+
+  _clearAllMarkers: function () {
+    this.state.markers.forEach (function (marker) {
+      marker.setMap(null);
+    });
+    this.setState({markers: []});
+  },
+
   _updateMap: function () {
+    var markers = [];
+    var that = this;
+
+    this._clearAllMarkers();
+    this.map.setCenter(MapStore.getCenter());
+
     var request = {
-      location: new google.maps.LatLng(-33.8665433,151.1956316),
-      radius: '500',
-      query: MapStore.getQuery()
+      bounds: this.map.getBounds(),
+      keyword: MapStore.getQuery()
     };
 
     var service = new google.maps.places.PlacesService(this.map);
-    var that = this;
-    service.textSearch(request, function (results, status) {
+    service.radarSearch(request, function (results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          var place = results[i];
-          that._createMarker(results[i]);
+        for (var i = 0; i < 10; i++) {
+          markers.push(that._createMarker(results[i]));
         }
-      } else {
-        console.log("test");
       }
     });
-    // this.map.setCenter(MapStore.getCenter());
+    this.setState({markers: markers});
   },
 
   _createMarker:  function (place) {
@@ -33,11 +45,7 @@ var Map = React.createClass({
       map: this.map,
       position: place.geometry.location
     });
-
-    google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(place.name + "<br />" + place.formatted_address +"<br />" + place.website + "<br />" + place.rating + "<br />" + place.formatted_phone_number);
-      infowindow.open(this.map, this);
-    });
+    return marker;
   },
 
   componentDidMount: function () {

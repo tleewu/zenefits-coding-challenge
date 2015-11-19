@@ -34,10 +34,9 @@ var MapStore = $.extend({}, EventEmitter.prototype, {
     switch (action.actionType){
       case "TEST2":
         _query = action.query;
+        _center = action.center;
         MapStore.changed();
         break;
-
-
     }
   })
 });
