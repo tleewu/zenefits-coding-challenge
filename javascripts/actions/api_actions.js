@@ -8,6 +8,20 @@ var ApiActions = {
       center: location,
       query: query
     });
+  },
+
+  resetMapCenter: function (coords) {
+    AppDispatcher.dispatch ({
+      actionType: "TEST1",
+      center: coords
+    });
+  },
+
+  updateMarkers: function (arrayOfMarkers) {
+    AppDispatcher.dispatch ({
+      actionType: "TEST",
+      markers: arrayOfMarkers
+    });
   }
 };
 

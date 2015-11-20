@@ -3,19 +3,13 @@ var EventEmitter = require('events').EventEmitter;
 
 'use strict';
 
-var _center = {lat: 37.7833, lng: -122.4167};
-var _query = {};
+var _markers = [];
 
 CHANGE = "CHANGE";
 
-var MapStore = $.extend({}, EventEmitter.prototype, {
-
-  getCenter: function () {
-    return _center;
-  },
-
-  getQuery: function () {
-    return _query;
+var MarkerStore = $.extend({}, EventEmitter.prototype, {
+  all: function () {
+    return _markers.slice(0);
   },
 
   addChangeListener: function (callback) {
@@ -32,17 +26,12 @@ var MapStore = $.extend({}, EventEmitter.prototype, {
 
   dispatcherID: AppDispatcher.register(function (action) {
     switch (action.actionType){
-      case "TEST2":
-        _query = action.query;
-        _center = action.center;
-        MapStore.changed();
-        break;
-      case "TEST1":
-        _center = action.center;
-        MapStore.changed();
+      case "TEST":
+        _markers = action.markers;
+        MarkerStore.changed();
         break;
     }
   })
 });
 
-module.exports = MapStore;
+module.exports = MarkerStore;
