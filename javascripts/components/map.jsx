@@ -12,13 +12,26 @@ var Map = React.createClass({
     return ({markers: []});
   },
 
-  _updateMap: function () {
-    var markers = [];
+  _updateMarkers: function () {
     var oldMarkers = this.state.markers.slice(0);
+    for (var i = 0; i < oldMarkers.length; i++) {
+      oldMarkers[i].setMap(null);
+    }
+
+    var newMarkers = MarkerStore.all();
+    for (var j = 0; j < newMarkers.length; j++) {
+      newMarkers[j].setMap(this.map);
+    }
+
+    this.setState({markers: newMarkers});
+  },
+
+  _updateMap: function () {
     var that = this;
 
     this.map.setCenter(MapStore.getCenter());
     if (MapStore.getQuery().length > 0) {
+      var markers = [];
       var request = {
         bounds: this.map.getBounds(),
         keyword: MapStore.getQuery()
@@ -32,16 +45,11 @@ var Map = React.createClass({
               map: that.map,
               position: results[i].geometry.location
             });
-            marker.setMap(that.map);
             markers.push(marker);
           }
+          ApiActions.updateMarkers(markers);
         }
       });
-
-      for (var i = 0; i < oldMarkers.length; i++) {
-        oldMarkers[i].setMap(null);
-      }
-      this.setState({markers: markers});
     }
 
   },
@@ -53,6 +61,7 @@ var Map = React.createClass({
 
   componentDidMount: function () {
     MapStore.addChangeListener(this._updateMap);
+    MarkerStore.addChangeListener(this._updateMarkers);
     var map = ReactDOM.findDOMNode(this.refs.map);
     var mapOptions = {
       center: {lat: 37.7833, lng: -122.4167},
