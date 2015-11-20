@@ -4,7 +4,7 @@ var EventEmitter = require('events').EventEmitter;
 'use strict';
 
 var _center = {lat: 37.7833, lng: -122.4167};
-var _query = {};
+var _query = "";
 
 CHANGE = "CHANGE";
 
