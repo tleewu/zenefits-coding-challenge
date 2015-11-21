@@ -1,5 +1,7 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
+var SearchConstants = require('../constants/search.js');
+var MapConstants = require('../constants/map.js');
 
 'use strict';
 
@@ -32,12 +34,12 @@ var MapStore = $.extend({}, EventEmitter.prototype, {
 
   dispatcherID: AppDispatcher.register(function (action) {
     switch (action.actionType){
-      case "TEST2":
+      case SearchConstants.QUERY_UPDATED:
         _query = action.query;
         _center = action.center;
         MapStore.changed();
         break;
-      case "TEST1":
+      case MapConstants.RESET_MAP_CENTER:
         _center = action.center;
         MapStore.changed();
         break;

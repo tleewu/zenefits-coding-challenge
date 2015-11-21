@@ -1,0 +1,11 @@
+'use strict';
+
+var SearchConstants = {
+  SEARCH_NEXT: "SEARCH_NEXT",
+  SEARCH_BACK: "SEARCH_BACK",
+  QUERY_UPDATED: "QUERY_UPDATED",
+  SEARCH_RESULTS_UPDATED: "SEARCH_RESULTS_UPDATED",
+  DISPLAY_PLACE: "DISPLAY_PLACE"
+};
+
+module.exports = SearchConstants;

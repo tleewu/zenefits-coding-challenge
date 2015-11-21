@@ -27,7 +27,7 @@ var SearchBar = React.createClass({
         location + "&key=AIzaSyCgpLQ3tKe3gpdI5oraHqYI6Wu0I4oLf-0";
       ApiUtil.findGeocode(geocodeUrl, this.state.type);
     } else {
-      alert ("please enter a location before you submit");
+      alert ("Please enter a location.");
     }
   },
 
@@ -36,7 +36,7 @@ var SearchBar = React.createClass({
       <form onSubmit={this._handleSubmit}>
         <div className="container">
           <div className="col-md-5" id="search">
-            <input type="text" className="search-bar" placeholder="What are you looking for?" value={this.state.type} onChange={this._updateType}/>
+            <input type="text" className="search-bar" placeholder="What are you looking for? Pizza, bars, cafes, sports..." value={this.state.type} onChange={this._updateType}/>
           </div>
           <div className="col-md-5" id="search">
             <input type="text" className="search-bar" placeholder="Search location..." value={this.state.location} onChange={this._updateLocation}/>

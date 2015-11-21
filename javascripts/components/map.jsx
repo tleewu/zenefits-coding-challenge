@@ -40,7 +40,8 @@ var Map = React.createClass({
 
       var request = {
         bounds: this.map.getBounds(),
-        query: MapStore.getQuery()
+        query: MapStore.getQuery(),
+        radius: '500'
       };
 
       var service = new google.maps.places.PlacesService(this.map);
@@ -77,7 +78,7 @@ var Map = React.createClass({
     var map = ReactDOM.findDOMNode(this.refs.map);
     var mapOptions = {
       center: {lat: 37.7833, lng: -122.4167},
-      zoom: 13
+      zoom: 15
     };
     this.map = new google.maps.Map(map, mapOptions);
     this.map.addListener('idle', this.updateMapWhenMoved);

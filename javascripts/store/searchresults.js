@@ -1,5 +1,6 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
+var SearchConstants = require('../constants/search.js');
 
 'use strict';
 
@@ -28,20 +29,20 @@ var SearchResultsStore = $.extend({}, EventEmitter.prototype, {
 
   dispatcherID: AppDispatcher.register(function (action) {
     switch (action.actionType){
-      case "TEST4":
+      case SearchConstants.SEARCH_RESULTS_UPDATED:
         _results = action.results;
         _max = action.length;
         current = 0;
         SearchResultsStore.changed();
         break;
-      case "NEXT":
+      case SearchConstants.SEARCH_NEXT:
         current += 1;
         if (current == _max) {
           current = 0;
         }
         SearchResultsStore.changed();
         break;
-      case "BACK":
+      case SearchConstants.SEARCH_BACK:
         if (current === 0) {
           current = _max-1;
         } else {

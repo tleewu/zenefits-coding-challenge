@@ -1,5 +1,7 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
+var SearchConstants = require('../constants/search.js');
+var MarkerConstants = require('../constants/marker.js');
 
 'use strict';
 
@@ -32,19 +34,19 @@ var MarkerStore = $.extend({}, EventEmitter.prototype, {
 
   dispatcherID: AppDispatcher.register(function (action) {
     switch (action.actionType){
-      case "TEST":
+      case MarkerConstants.UPDATE_MARKERS:
         _markers = action.markers;
         _max = action.length;
         MarkerStore.changed();
         break;
-      case "NEXT":
+      case SearchConstants.SEARCH_NEXT:
         _bouncing += 1;
         if (_bouncing == _max) {
           _bouncing = 0;
         }
         MarkerStore.changed();
         break;
-      case "BACK":
+      case SearchConstants.SEARCH_BACK:
         if (_bouncing === 0) {
           _bouncing = _max-1;
         } else {

@@ -1,5 +1,6 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
+var SearchConstants = require('../constants/search.js');
 
 'use strict';
 
@@ -26,7 +27,7 @@ var SearchDetailsStore = $.extend({}, EventEmitter.prototype, {
 
   dispatcherID: AppDispatcher.register(function (action) {
     switch (action.actionType){
-      case "TEST5":
+      case SearchConstants.DISPLAY_PLACE:
         _result = action.result;
         SearchDetailsStore.changed();
         break;

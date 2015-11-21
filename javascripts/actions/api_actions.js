@@ -1,10 +1,13 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
+var SearchConstants = require('../constants/search.js');
+var MapConstants = require('../constants/map.js');
+var MarkerConstants = require('../constants/marker.js');
 
 var ApiActions = {
 
   updateQuery: function (location, query) {
     AppDispatcher.dispatch ({
-      actionType: "TEST2",
+      actionType: SearchConstants.QUERY_UPDATED,
       center: location,
       query: query
     });
@@ -12,14 +15,14 @@ var ApiActions = {
 
   resetMapCenter: function (coords) {
     AppDispatcher.dispatch ({
-      actionType: "TEST1",
+      actionType: MapConstants.RESET_MAP_CENTER,
       center: coords
     });
   },
 
   updateMarkers: function (arrayOfMarkers, length) {
     AppDispatcher.dispatch ({
-      actionType: "TEST",
+      actionType: MarkerConstants.UPDATE_MARKERS,
       markers: arrayOfMarkers,
       length: length
     });
@@ -27,7 +30,7 @@ var ApiActions = {
 
   updateSearchResults: function (searchResults, length) {
     AppDispatcher.dispatch ({
-      actionType: "TEST4",
+      actionType: SearchConstants.SEARCH_RESULTS_UPDATED,
       results: searchResults,
       length: length
     });
@@ -35,20 +38,20 @@ var ApiActions = {
 
   displayPlace: function (result) {
     AppDispatcher.dispatch ({
-      actionType: "TEST5",
+      actionType: SearchConstants.DISPLAY_PLACE,
       result: result
     });
   },
 
   searchNext: function () {
     AppDispatcher.dispatch ({
-      actionType: "NEXT",
+      actionType: SearchConstants.SEARCH_NEXT,
     });
   },
 
   searchBack: function () {
     AppDispatcher.dispatch ({
-      actionType: "BACK",
+      actionType: SearchConstants.SEARCH_BACK,
     });
   }
 };
