@@ -9,7 +9,9 @@
     "react": "~0.14.2",
     "babel-loader": "~6.2.0",
     "react-dom": "~0.14.2",
-    "webpack": "~1.12.6"
+    "webpack": "~1.12.6",
+    "flux": "~2.1.1",
+    "events": "~1.1.0"
   },
   "devDependencies": {},
   "scripts": {

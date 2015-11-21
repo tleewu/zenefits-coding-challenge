@@ -1,7 +1,7 @@
 var ApiActions = require('../actions/api_actions.js');
 
 var ApiUtil = {
-  findGeocode: function (geocodeUrl, query) {
+  makeSearch: function (geocodeUrl, query) {
     $.ajax ({
       url: geocodeUrl,
       success: function (result) {

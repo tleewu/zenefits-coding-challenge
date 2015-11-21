@@ -25,7 +25,7 @@ var SearchBar = React.createClass({
     if (location.length) {
       var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
         location + "&key=AIzaSyCgpLQ3tKe3gpdI5oraHqYI6Wu0I4oLf-0";
-      ApiUtil.findGeocode(geocodeUrl, this.state.type);
+      ApiUtil.makeSearch(geocodeUrl, this.state.type);
     } else {
       alert ("Please enter a location.");
     }
