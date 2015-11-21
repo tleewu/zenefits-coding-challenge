@@ -22,6 +22,20 @@ var ApiActions = {
       actionType: "TEST",
       markers: arrayOfMarkers
     });
+  },
+
+  updateSearchResults: function (searchResults) {
+    AppDispatcher.dispatch ({
+      actionType: "TEST4",
+      results: searchResults
+    });
+  },
+
+  displayPlace: function (result) {
+    AppDispatcher.dispatch ({
+      actionType: "TEST5",
+      result: result
+    });
   }
 };
 

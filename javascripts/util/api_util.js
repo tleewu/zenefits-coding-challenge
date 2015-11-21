@@ -8,7 +8,7 @@ var ApiUtil = {
         ApiActions.updateQuery (result.results[0].geometry.location, query);
       }
     });
-  }
+  },
 };
 
 module.exports = ApiUtil;

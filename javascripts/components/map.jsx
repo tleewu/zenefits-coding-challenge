@@ -32,13 +32,15 @@ var Map = React.createClass({
     this.map.setCenter(MapStore.getCenter());
     if (MapStore.getQuery().length > 0) {
       var markers = [];
+      var searchResults = [];
+
       var request = {
         bounds: this.map.getBounds(),
-        keyword: MapStore.getQuery()
+        query: MapStore.getQuery()
       };
 
       var service = new google.maps.places.PlacesService(this.map);
-      service.radarSearch(request, function (results, status) {
+      service.textSearch(request, function (results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < 10; i++) {
             var marker = new google.maps.Marker ({
@@ -46,8 +48,10 @@ var Map = React.createClass({
               position: results[i].geometry.location
             });
             markers.push(marker);
+            searchResults.push(results[i]);
           }
           ApiActions.updateMarkers(markers);
+          ApiActions.updateSearchResults(searchResults);
         }
       });
     }
