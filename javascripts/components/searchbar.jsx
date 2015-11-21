@@ -34,9 +34,18 @@ var SearchBar = React.createClass({
   render: function () {
     return (
       <form onSubmit={this._handleSubmit}>
-        <input type="text" placeholder="What are you looking for?" value={this.state.type} onChange={this._updateType}/>
-        <input type="text" placeholder="Search location..." value={this.state.location} onChange={this._updateLocation}/>
-        <input type="submit"/>
+        <div className="container">
+          <div className="col-md-5" id="search">
+            <input type="text" className="search-bar" placeholder="What are you looking for?" value={this.state.type} onChange={this._updateType}/>
+          </div>
+          <div className="col-md-5" id="search">
+            <input type="text" className="search-bar" placeholder="Search location..." value={this.state.location} onChange={this._updateLocation}/>
+          </div>
+          <div className="col-md-2" id="search">
+            <input type="submit" id="submit" className="search-bar" value="Search"/>
+          </div>
+        </div>
+        <br/>
       </form>
     )
   }

@@ -31,6 +31,21 @@ button {
   margin-top: 100px;
 }
 
+.search-bar {
+  padding-top: 0px;
+  height: 40px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+#submit {
+  background-color: cornflowerblue;
+}
+
+#search {
+  padding: 0px 0px;
+}
+
 .place-name {
   font-size: 20px;
   letter-spacing: 1px;

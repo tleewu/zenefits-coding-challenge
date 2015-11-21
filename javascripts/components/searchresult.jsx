@@ -38,7 +38,11 @@ var SearchResults = React.createClass({
       tags = [];
       this.state.result.types.forEach(function (tag) {
         tags.push(<span className="tags"> {tag} </span>);
+        if (tags.length % 4 === 0) {
+          tags.push(<div><br/></div>);
+        }
       });
+
       image = <img src={this.state.result.icon} height="75px" width="75px"/>;
       name = <div className="place-name"> {this.state.result.name.toUpperCase()} </div>;
       address = <div className="place-address"> {this.state.result.formatted_address.toUpperCase()} </div>;
