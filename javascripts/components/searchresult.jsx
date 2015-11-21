@@ -20,15 +20,24 @@ var SearchResults = React.createClass({
     SearchResultsStore.addChangeListener(this._displayResult);
   },
 
+  _next: function () {
+    ApiActions.searchNext();
+  },
+
+  _back: function () {
+    ApiActions.searchBack();
+  },
+
   render: function () {
     var result = "";
     if (this.state.result.name) {
-      result = this.state.result.name;
+      result = <div> {this.state.result.name} {this.state.result.formatted_address} </div>;
     }
     return (
       <div>
-        test
         {result}
+        <button onClick={this._next}> next </button>
+        <button onClick={this._back}> back </button>
       </div>
     )
   }

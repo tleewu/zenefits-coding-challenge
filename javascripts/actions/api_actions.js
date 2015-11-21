@@ -17,17 +17,19 @@ var ApiActions = {
     });
   },
 
-  updateMarkers: function (arrayOfMarkers) {
+  updateMarkers: function (arrayOfMarkers, length) {
     AppDispatcher.dispatch ({
       actionType: "TEST",
-      markers: arrayOfMarkers
+      markers: arrayOfMarkers,
+      length: length
     });
   },
 
-  updateSearchResults: function (searchResults) {
+  updateSearchResults: function (searchResults, length) {
     AppDispatcher.dispatch ({
       actionType: "TEST4",
-      results: searchResults
+      results: searchResults,
+      length: length
     });
   },
 
@@ -35,6 +37,18 @@ var ApiActions = {
     AppDispatcher.dispatch ({
       actionType: "TEST5",
       result: result
+    });
+  },
+
+  searchNext: function () {
+    AppDispatcher.dispatch ({
+      actionType: "NEXT",
+    });
+  },
+
+  searchBack: function () {
+    AppDispatcher.dispatch ({
+      actionType: "BACK",
     });
   }
 };

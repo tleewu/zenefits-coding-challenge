@@ -14,6 +14,7 @@ var Map = React.createClass({
 
   _updateMarkers: function () {
     var oldMarkers = this.state.markers.slice(0);
+    var bouncing = MarkerStore.getBounce();
     for (var i = 0; i < oldMarkers.length; i++) {
       oldMarkers[i].setMap(null);
     }
@@ -21,6 +22,9 @@ var Map = React.createClass({
     var newMarkers = MarkerStore.all();
     for (var j = 0; j < newMarkers.length; j++) {
       newMarkers[j].setMap(this.map);
+      if (bouncing == j) {
+        newMarkers[j].setAnimation(google.maps.Animation.BOUNCE);
+      }
     }
 
     this.setState({markers: newMarkers});
@@ -42,7 +46,11 @@ var Map = React.createClass({
       var service = new google.maps.places.PlacesService(this.map);
       service.textSearch(request, function (results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < 10; i++) {
+          var length = 10;
+          if (results.length < 10) {
+            length = results.length;
+          }
+          for (var i = 0; i < length; i++) {
             var marker = new google.maps.Marker ({
               map: that.map,
               position: results[i].geometry.location
@@ -50,8 +58,8 @@ var Map = React.createClass({
             markers.push(marker);
             searchResults.push(results[i]);
           }
-          ApiActions.updateMarkers(markers);
-          ApiActions.updateSearchResults(searchResults);
+          ApiActions.updateMarkers(markers, length);
+          ApiActions.updateSearchResults(searchResults, length);
         }
       });
     }

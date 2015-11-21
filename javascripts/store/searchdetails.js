@@ -30,6 +30,7 @@ var SearchDetailsStore = $.extend({}, EventEmitter.prototype, {
         _result = action.result;
         SearchDetailsStore.changed();
         break;
+
     }
   })
 });
