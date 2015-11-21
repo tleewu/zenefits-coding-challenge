@@ -8,10 +8,17 @@ var SearchResults = require('./javascripts/components/searchresult.jsx');
 var App = React.createClass({
   render: function() {
     return (
-      <div>
+      <div className="container">
         <SearchBar />
-        <SearchResults />
-        <Map />
+
+        <div className="row">
+          <div className="col-md-6">
+            <Map />
+          </div>
+          <div className="col-md-6">
+            <SearchResults />
+          </div>
+        </div>
       </div>
     );
   }

@@ -2,3 +2,52 @@
   height: 500px;
   width: 500px;
 }
+
+.title {
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.next {
+  position: absolute;
+  top: 200px;
+  left: 100%;
+}
+
+.back {
+  position: absolute;
+  top: 200px;
+  left: 0%;
+}
+
+.search-results {
+  text-align:center;
+  margin-top: 100px;
+}
+
+.place-name {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.place-address {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.tags {
+  background: rgba(0,0,0,0.05);
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px 5px;
+}
